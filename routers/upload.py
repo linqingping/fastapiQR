@@ -8,7 +8,7 @@ import base64
 
 router = APIRouter()
 
-
+# 渲染返回内容
 def generate_html_response(contents,barcodeData):
     html_content = """
 <!DOCTYPE html>
@@ -27,12 +27,14 @@ def generate_html_response(contents,barcodeData):
     """
     return HTMLResponse(content=html_content, status_code=200)
 
+#获取前端上传的文件
 @router.post("/upload/")
 async def upload(request: Request,
                 # file: bytes = File(...),       # # 把文件对象转为bytes类型,这种类型的文件无法保存
                 file_obj: UploadFile = File(...),    # UploadFile转为文件对象，可以保存文件到本地
                 # info: str = Form(...)
                 ):
+    #读取文件
     contents = await file_obj.read()
     #转成字节流可以网页显示
     # print(base64.b64encode(contents))
