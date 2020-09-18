@@ -44,8 +44,8 @@ input[type=submit]{
 <div style="text-align: center; width:100%;">
  <div style="margin: 5% 0 0 25%; width:50%; border-style: solid;  border-width: 1px; border-color: #98bf21;">
    <h1 style="text-align: center;">二维码在线识别</h1>
-   <input type="file" id="file" name="file_obj" multiple></br>
-    <input type="submit" value="二维码识别" >
+    <input type="file" id="file" name="file_obj" multiple></br>
+    <input type="submit" value="二维码识别" style="color:white;font-weight:bolder">
  </div>
  </div>
 </form>
