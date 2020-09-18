@@ -8,6 +8,55 @@ import base64
 
 router = APIRouter()
 
+
+def home_html():
+    html_content = """
+<!DOCTYPE html>
+<head>
+<style type="text/css">
+input[type="file"]{
+   -webkit-appearance: none;
+   text-align: left;
+   -webkit-rtl-ordering:  left;
+}
+input[type="file"]::-webkit-file-upload-button{
+   -webkit-appearance: none;
+   float: right;
+   margin: 0 0 0 10px;
+   border: 1px solid #aaaaaa;
+   border-radius: 4px;
+   background-image: -webkit-gradient(linear, left bottom, left top, from(#d2d0d0), to(#f0f0f0));
+   background-image: -moz-linear-gradient(90deg, #d2d0d0 0%, #f0f0f0 100%);
+}
+input[type=submit]{
+ 			width: 110px;
+ 			height: 40px;
+            border-radius: 4px;
+            border: 1px solid #aaaaaa;
+ 			background-color: rgb(0,201,87);
+            # background-image: -webkit-gradient(linear, left bottom, left top, from(#d2d0d0), to(#f0f0f0));
+            # background-image: -moz-linear-gradient(90deg, #d2d0d0 0%, #f0f0f0 100%);
+ 		}
+
+</style>
+</head>
+<form method="post" action="/upload/" enctype="multipart/form-data">
+<div style="text-align: center; width:100%;">
+ <div style="margin: 5% 0 0 25%; width:50%; border-style: solid;  border-width: 1px; border-color: #98bf21;">
+   <h1 style="text-align: center;">二维码在线识别</h1>
+   <input type="file" id="file" name="file_obj" multiple></br>
+    <input type="submit" value="二维码识别" >
+ </div>
+ </div>
+</form>
+    """
+    return HTMLResponse(content=html_content, status_code=200)
+
+@router.get("/")
+async def scan():
+    return home_html()
+
+
 # 渲染返回内容
 def generate_html_response(contents,barcodeData):
     html_content = """

@@ -5,7 +5,7 @@ from fastapi import FastAPI,Request,Path,Query
 #跨域
 from fastapi.middleware.cors import CORSMiddleware
 #导入路由
-from routers import hello,home,search,upload
+from routers import upload
 
 app = FastAPI(title="二维码扫描API",description="二维码扫描")
 #支持仅限于支持哪些域名进行跨域
